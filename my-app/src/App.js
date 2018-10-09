@@ -33,13 +33,13 @@ class App extends Component {
       profileMenuVisible: false,
       backDropVisible: false,
       view: 1,
-      loggedUser: '',
+      loggedUser: "",
       // Variables related to Profile Menu
-      username: '',
-      password: '',
+      username: "",
+      password: "",
       // Variables related to Shipping Page
       address: {},
-      creditCard: {},
+      creditCard: {}
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this
@@ -62,7 +62,7 @@ class App extends Component {
   }
 
   // Functions related to Shipping Page
-  handleAddressSubmit(){
+  handleAddressSubmit() {
     alert("Works");
   }
 
@@ -75,18 +75,20 @@ class App extends Component {
         "Content-Type": "application/x-www-form-urlencoded",
         password: this.state.password
       }
-    }).then(response =>{
-      if (response.ok) {
-        this.state.loggedUser = this.state.username;
-        return response.json();
-      } else {
-        alert("Incorrect login details");
-      }
-    }).then(function(myJson){
-      if(myJson){
-        alert(myJson);
-      }
-    });
+    })
+      .then(response => {
+        if (response.ok) {
+          this.state.loggedUser = this.state.username;
+          return response.json();
+        } else {
+          alert("Incorrect login details");
+        }
+      })
+      .then(function(myJson) {
+        if (myJson) {
+          alert(myJson);
+        }
+      });
 
     event.preventDefault();
   }
@@ -281,7 +283,9 @@ class App extends Component {
                   this.addItemToShoppingCart(product)
                 }
               >
-                <Link to="/shipping">Enter Shipping Address</Link>
+                <Link to="/shipping" style={{ color: "#FFFFFF" }}>
+                  Enter Shipping Address
+                </Link>
               </ShoppingCart>
             </ShoppingCartSlider>
             {redirect}
